@@ -3,7 +3,6 @@ import random
 from tkinter import messagebox
 import pyperclip
 
-# RANDOM PASSWORD GENERATOT
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -17,6 +16,7 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 #     clip.clipboard_append(password)
 #     clip.destroy()
 
+# ADDING DATA TO FILE
 def add_data_to_file():
     website = website_entry.get()
     email = email_entry.get()
@@ -28,13 +28,12 @@ def add_data_to_file():
         if ok:
             with open("data.text", "a") as file:
                 file.write(f"{website.title()}\t|\t{email}\t|\t{password}\n")
-
             website_entry.delete(0, END)
             password_entry.delete(0, END)
     else:
         messagebox.showinfo("Fail: ", message="Please fill all the fields")
 
-
+# RANDOM PASSWORD GENERATOR
 def generate_random_password():
     if password_entry.get():
         password_entry.delete(0, END)
@@ -45,7 +44,7 @@ def generate_random_password():
     # automatic_password_to_clipboard(random_password)
     pyperclip.copy(random_password)
 
-
+# APP GUI
 window = Tk()
 window.title("Password Manager")
 window.config(padx=80, pady=50)
@@ -67,6 +66,7 @@ email_label.grid(row=2, column=0)
 email_entry = Entry(width=52)
 email_entry.grid(row=2, column=1, columnspan=2, sticky="EW")
 email_entry.insert(0, "mega.film199@gmail.com")
+
 # Password
 password_label = Label(text="Password:", font=("Arial", 10, "normal"), pady=3)
 password_label.grid(row=3, column=0)
