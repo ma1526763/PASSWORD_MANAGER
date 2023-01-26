@@ -16,7 +16,6 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 #     clip.clipboard_clear()
 #     clip.clipboard_append(password)
 #     clip.destroy()
-
 def confirm(title, message):
     return True if messagebox.askokcancel(title=title, message=message) else False
 def clear_screen():
@@ -107,37 +106,38 @@ def generate_random_password():
 # APP GUI
 window = Tk()
 window.title("Password Manager")
-window.config(padx=80, pady=50)
-canvas = Canvas(width=200, height=189)
+window.config(padx=80, pady=50, bg="light blue")
+canvas = Canvas(width=200, height=189, bg="light blue", highlightbackground="light blue")
 img = PhotoImage(file="logo.png")
 canvas.create_image(100, 90, image=img)
 canvas.grid(row=0, column=1, padx=30)
 
 # Website
-website_label = Label(text="Website", font=("Arial", 10, "normal"), pady=3)
+website_label = Label(text="Website", font=("Arial", 10, "normal"), pady=3, bg="light blue")
 website_label.grid(row=1, column=0)
-website_entry = Entry(width=32)
+website_entry = Entry()
 website_entry.grid(row=1, column=1, columnspan=2, sticky="EW")
 website_entry.focus()
 search_website_button = Button(text="Search", command=search_website_info)
 search_website_button.grid(row=1, column=2, sticky="EW")
 
 # Email
-email_label = Label(text="Email/Username:", font=("Arial", 10, "normal"), pady=3)
+email_label = Label(text="Email/Username:", font=("Arial", 10, "normal"), pady=3, background="light blue")
 email_label.grid(row=2, column=0)
-email_entry = Entry(width=52)
+email_entry = Entry()
 email_entry.grid(row=2, column=1, columnspan=2, sticky="EW")
 email_entry.insert(0, "mega.film199@gmail.com")
 
 # Password
-password_label = Label(text="Password:", font=("Arial", 10, "normal"), pady=3)
+password_label = Label(text="Password:", font=("Arial", 10, "normal"), pady=3, background="light blue")
 password_label.grid(row=3, column=0)
-password_entry = Entry(width=34)
+password_entry = Entry()
 password_entry.grid(row=3, column=1, sticky="EW")
 password_button = Button(text="Generate Password", command=generate_random_password)
 password_button.grid(row=3, column=2, sticky="EW")
 
 # Add Button
-add_button = Button(text="Add", width=44, pady=2, command=save_data_to_file)
+add_button = Button(text="Add", command=save_data_to_file)
 add_button.grid(row=4, column=1, columnspan=2, sticky="EW")
+
 window.mainloop()
